@@ -40,6 +40,8 @@ class HomeScreen extends StatelessWidget {
       ),
       body: PageView(
         controller: appController.pageViewControllers.value,
+        // onPageChanged: (value) => appController.onItemTapped(value),
+        physics: const NeverScrollableScrollPhysics(),
         children: const [
           HomePage(),
           FoodPage(),
