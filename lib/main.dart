@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: PageView(
         controller: appController.pageViewControllers.value,
-        onPageChanged: (value) => appController.onItemTapped(value),
+        // onPageChanged: appController.onItemTapped,
         physics: const NeverScrollableScrollPhysics(),
         children: const [
           HomePage(),
