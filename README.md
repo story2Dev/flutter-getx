@@ -1,5 +1,8 @@
 # flutter_application_getx
 
+![2024-10-17_16-01-07 (1)](https://github.com/user-attachments/assets/f8eba980-dca6-4e14-aa4d-00bc2dfa632f)
+
+
 A new Flutter project.
 
 ## Getting Started
