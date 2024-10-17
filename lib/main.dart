@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_getx/core/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'controller/app_controller.dart';
 import 'pages/pages.dart';
 import 'widgets/widgets.dart';
 import 'package:flutter_application_getx/routes/app_pages.dart';
 
-
-void main() {
+void main() async {
+  await GetStorage.init();
   Get.put(AppController());
-  runApp(const EasyOrder());
+  runApp(EasyOrder());
 }
 
 class EasyOrder extends StatelessWidget {
-  const EasyOrder({super.key});
+  EasyOrder({super.key});
+
+  final appController = Get.find<AppController>();
 
   // This widget is the root of your application.
   @override
@@ -20,10 +24,9 @@ class EasyOrder extends StatelessWidget {
     return GetMaterialApp(
         title: 'Easy Order',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        darkTheme: AppTheme.darkTheme,
+        theme: AppTheme.lightTheme,
+        themeMode: appController.isDark ? ThemeMode.dark : ThemeMode.light,
         home: HomeScreen(),
         getPages: AppPages.routes);
   }
