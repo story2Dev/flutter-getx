@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller/app_controller.dart';
+import '../routes/app_pages.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -12,24 +13,25 @@ class SettingScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Setting"),
+        title: Text("settings".tr),
       ),
       body: Obx(() => ListView(
             children: [
-              const ListTile(
-                title: Text("Language"),
-                trailing: Wrap(
+              ListTile(
+                title: Text("language".tr),
+                trailing:  Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 6,
                   children: [
-                    Text('English'),
-                    Icon(Icons.arrow_forward_ios, size: 18)
+                    Text(appController.currentLanguage.value.nativeName),
+                    const Icon(Icons.arrow_forward_ios, size: 18)
                   ],
                 ),
+                onTap: () => Get.toNamed(AppRoutes.settingLanguage),
               ),
               SwitchListTile(
-                  title: const Text("Dark Theme"),
+                  title: Text("dark_theme".tr),
                   value: appController.themeMode.value,
                   onChanged: (value) {
                     appController.changeTheme(value);
@@ -37,9 +39,9 @@ class SettingScreen extends StatelessWidget {
                         ? ThemeMode.dark
                         : ThemeMode.light);
                   }),
-              const ListTile(
-                title: Text("About"),
-                trailing: Icon(Icons.arrow_forward_ios),
+               ListTile(
+                title: Text("about".tr),
+                trailing: const Icon(Icons.arrow_forward_ios),
               ),
             ],
           )),
